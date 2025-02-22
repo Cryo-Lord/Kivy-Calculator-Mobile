@@ -6,10 +6,6 @@ class calculator(ABC):
     memory = []
 
     @abstractmethod
-    def input():
-        pass
-
-    @abstractmethod
     def calculate():
         pass
 
@@ -22,11 +18,26 @@ class calculator(ABC):
         pass
 
 class mathematics(calculator):
-    self.super(__init__)
+    memory = []
 
+    def calculate(input:str):->float
+        try:
+            return eval(input)
+        except Error as e:
+            return f"Error: {e}"
 
 class averager(calculator):
-    pass
+    memory = []
+
+    def save(result:float):-> None
+        memory.append(result)
+
+    def calculate(input:list[dict]):
+        total = None
+        for data in input:
+            total += data.grade*data.percentage
+        self.save(total)
+        return total
 
 class cientific(calculator):
     pass
